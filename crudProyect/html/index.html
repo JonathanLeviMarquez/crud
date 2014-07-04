@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="myapp">
+
+  <head>
+    <title>Levi // Crud</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+
+    <script src="../js/jquery-2.1.1.min.js" type="text/javascript"></script>
+     <script src="../js/bootstrap.min.js" type="text/javascript"></script> 
+
+    <!--<link rel="stylesheet" type="text/css" href="https://www.firebase.com/css/example.css">-->
+  </head>
+  <body ng-controller="MyController">
+
+    <header class="container"></header>
+
+    <div id="main" class="container">
+
+
+      <div id="content-header" class="col-xs-12">
+                <div class="row">
+                    <h1 style="color:#6E6E6E">Bienvenido al crud de usuarios.</h1>
+                </div>
+                <br>
+                <div class="pull-right">
+                        <button class="btn btn-danger" ng-click="destroyAll($event)" >Borrar todo</button>
+                </div>
+      </div>
+
+
+      <div id="messagesDiv">
+        
+        <table id="personTable" class="table">
+          <thead><th>Nombre</th> <th>Apellido Paterno</th> <th>Apellido Materno</th> <th>Eliminar</th> <th>Modificar</th></thead>
+          <tbody>
+
+            <tr ng-repeat="(key,person) in people">
+             
+            <td>{{person.name}}</td><td>{{person.lastName}}</td> <td>{{person.lastName2}}</td> 
+             
+            <td><button type="submit"  ng-click="destroy($event,key)" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"></span>
+              Borrar</button></td>
+            <td><button type="button" ng-click="select($event,key)" class="btn btn-info" >
+              <span class="glyphicon glyphicon-pencil"></span>
+              Modificar</button></td>
+           </tr>
+
+          </tbody>
+          
+        </table>
+      </div>
+      <br><br>
+      <div class="greybox col-xs-6">
+         <div class="col-md-12 section text-center">
+
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"><li class="glyphicon glyphicon-user"></li></span>
+            <input type="text" ng-model="name" class="form-control" placeholder="Nombre">
+          </div>
+          <br>
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"><li class="glyphicon glyphicon-star"></li></span>
+            <input type="text" ng-model="lastName" class="form-control"  placeholder="Apellido Paterno...">
+          </div> 
+          <br>
+          <div class="input-group col-md-8">
+            <span class="input-group-addon"><li class="glyphicon glyphicon-star"></li></span>
+            <input type="text" ng-model="lastName2"  class="form-control" placeholder="Apellido Materno...">
+           </div> 
+           <br>
+           <div id="setGroupGrade">
+              <button id="btnAddOrUp" type="submit" ng-click="addPerson($event)" class="btn btn-success" >Guardar</button>
+          </div>
+
+         </div>
+        </div>  
+
+    </div>
+      
+    <footer></footer>
+    <script src="../js/proyect.js" type="text/javascript"></script>
+  </body>
+</html>
+
+
